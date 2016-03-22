@@ -1,6 +1,7 @@
 package gosession
 
 import (
+	"net/http"
 	"time"
 )
 
@@ -39,6 +40,18 @@ func NewGoSessionManager(gosessionsId) *GoSessionManager {
 		GoSessionId: GoSessionId,
 		GCInterval:  time.Millisecond * 10,
 	}
+}
+
+//获取gosession
+func (gsm *GoSessionManager) getGoSession(response http.ResponseWriter, request *http.Request) *GoSession {
+
+	currentCookie, err := request.Cookie(gsm.GoSessionId)
+	if err != nil || currentCookie == nil { //创建一个新的gosession
+
+	} else {
+
+	}
+
 }
 
 func StartGC(gms *GoSessionManager) {
