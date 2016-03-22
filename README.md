@@ -1,6 +1,6 @@
 # gosession
 
-provide  a session  for go web  in memory !
+provide  a session support for go web  in memory !
 
 
 example :
