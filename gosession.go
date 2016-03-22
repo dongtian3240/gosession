@@ -34,6 +34,9 @@ type GoSessionManager struct {
 }
 
 func NewGoSessionManager(gosessionsId string) *GoSessionManager {
+	if gosessionsId == "" {
+		gosessionsId = GoSessionId
+	}
 	return &GoSessionManager{
 		gosessions:  make(map[string]*GoSession),
 		CreateAts:   make(map[string]time.Time),
@@ -41,7 +44,7 @@ func NewGoSessionManager(gosessionsId string) *GoSessionManager {
 		Domain:      Domain,
 		HttpOnly:    HttpOnly,
 		Path:        Path,
-		GoSessionId: GoSessionId,
+		GoSessionId: gosessionsId,
 		GCInterval:  time.Millisecond * 10,
 	}
 }
@@ -111,6 +114,12 @@ func (gs *GoSession) Get(key string) interface{} {
 	} else {
 		return nil
 	}
+}
+
+func (gs *GoSession) Set(key string, va interface{}) {
+
+	gs.data[key] = va
+
 }
 
 func (gs *GoSession) Delete(key string) {
