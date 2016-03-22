@@ -38,7 +38,7 @@ func gsessionHanlder(response http.ResponseWriter, request *http.Request) {
 
 the output :
 半夏
-va=  <nil>
+va=  "<nil>"
 
 the broswer cookie  key is go--session--id
 
