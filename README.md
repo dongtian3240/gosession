@@ -27,7 +27,10 @@ func main() {
 	http.ListenAndServe(":8087", nil)
 }
 
+
+
 func gsessionHanlder(response http.ResponseWriter, request *http.Request) {
+
 	gsm.UpdateGoSession(response, request)
 	gs := gsm.GetGoSession(response, request)
 	response.Write([]byte(gs.SId))
@@ -36,6 +39,7 @@ func gsessionHanlder(response http.ResponseWriter, request *http.Request) {
 	fmt.Println(va)
 	gs.Delete("name")
 	fmt.Println("va= ", gs.Get("name"))
+	
 }
 
 
